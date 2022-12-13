@@ -33,13 +33,13 @@ require_once __DIR__ . "/database/Products.php";
                             <p class="card-text">Price: <?php echo $prod->getPrice() ?></p>
                             <p class="card-text">Category: <?php echo $prod->category->type ?></p>
 
-                            <?php if($prod->type === "food") { ?>
+                            <?php if(get_class($prod) === "Food") { ?>
                                 <p class="card-text">Ingredients: <?php echo $prod->ingredients?></p>
                                 <p class="card-text">Weight: <?php echo $prod->kg?>/pack</p>
-                            <?php } elseif ($prod->type === "toy") { ?> 
+                            <?php } elseif (get_class($prod) === "Toy") { ?> 
                                 <p class="card-text">Color:  <?php echo $prod->color ?></p>
                                 <p class="card-text">Size:  <?php echo $prod->size ?></p>
-                            <?php } else {?>
+                            <?php } elseif (get_class($prod) === "Kennel") {?>
                                 <p class="card-text">Material: <?php echo $prod->material ?></p>
                                 <p class="card-text">Size:  <?php echo $prod->size ?></p>
                             <?php } ?>
